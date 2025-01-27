@@ -1,0 +1,35 @@
+/* src/index.css */
+/* Ensure all elements default to the theme background */
+* {
+  background-color: inherit;
+  color: inherit;
+}
+
+.container, .content, .section { /* Adjust classes if necessary */
+  background-color: var(--background-light);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode .container,
+body.dark-mode .content,
+body.dark-mode .section {
+  background-color: var(--background-dark);
+}
+
+:root {
+  --background-light: #f9fafb;
+  --background-dark: #121212;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: var(--background-light);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+  background-color: var(--background-dark);
+  color: #ffffff;
+}
