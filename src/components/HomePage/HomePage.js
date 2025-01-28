@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Code, Briefcase, Users, Sun, Moon, X } from 'lucide-react';
-import { SiPython, SiJavascript, SiHtml5, SiCss3, SiCplusplus, SiC, SiNodejs, SiReact, SiNodeDotJs, SiGit, SiHaskell, SiR } from 'react-icons/si';
+import { SiGmail, SiInstagram, SiLinkedin, SiGithub, SiPython, SiJavascript, SiHtml5, SiCss3, SiCplusplus, SiC, SiNodejs, SiReact, SiNodeDotJs, SiGit, SiHaskell, SiR } from 'react-icons/si';
 import './HomePage.css';
 import headshot from './headshot.jpg';
 
@@ -43,6 +43,21 @@ const HomePage = () => {
     document.body.style.overflow = !isImageExpanded ? 'hidden' : 'unset';
   };
 
+  const messages = [
+    "Welcome to my website! I'm a UCLA senior passionate about data science and analytics. Contact me below!"
+  ];
+  
+  const [currentLine, setCurrentLine] = useState(0);
+  
+  useEffect(() => {
+    const interval = setTimeout(() => {
+      if (currentLine < messages.length - 1) {
+        setCurrentLine(currentLine + 1);
+      }
+    }, 2000); // Adjust timing between line changes
+    return () => clearTimeout(interval);
+  }, [currentLine]);
+
   return (
     <div className="container">
       <nav className="navigation">
@@ -68,94 +83,119 @@ const HomePage = () => {
       </nav>
 
       <main className="main-content">
+
+        {/* Header Section */}
         <div className="header-section">
-          <div className="profile-container">
+            <div className="profile-container">
             <div 
-              className="profile-image-wrapper"
-              onClick={toggleImageExpand}
-              role="button"
-              tabIndex={0}
-              aria-label="Expand profile image"
+                className="profile-image-wrapper"
+                onClick={toggleImageExpand}
+                role="button"
+                tabIndex={0}
+                aria-label="Expand profile image"
             >
-            <img 
+                <img 
                 src={headshot}
                 alt="Tanmay Desai"
                 className="profile-image"
                 />
-              <div className="profile-image-overlay">
+                <div className="profile-image-overlay">
                 <span>View photo</span>
-              </div>
+                </div>
             </div>
-          </div>
-          <h1 className="name-title">TANMAY DESAI</h1>
-          <div className="contact-info">
-            <a href="mailto:desai.j.tanmay@gmail.com" className="contact-link">
-              desai.j.tanmay@gmail.com
-            </a>
-            <span className="separator">|</span>
-            <span>(805) 871-6211</span>
-            <span className="separator">|</span>
-            <span>Newbury Park, CA</span>
-          </div>
+            </div>
+            <h1 className="name-title">TANMAY DESAI</h1>
+
+        </div>
+        
+        {/* Description Section */}
+        <div className="typewriter-section">
+            <h2>Hi, I'm Tanmay Desai</h2>
+            <p className="typewriter">
+            Welcome to my website! I'm a UCLA senior passionate about data science and analytics. Contact me below!
+            </p>
         </div>
 
         {/* Image Modal */}
         {isImageExpanded && (
-          <div className="modal-overlay" onClick={toggleImageExpand}>
+            <div className="modal-overlay" onClick={toggleImageExpand}>
             <div className="modal-content" onClick={e => e.stopPropagation()}>
-              <button className="modal-close" onClick={toggleImageExpand}>
+                <button className="modal-close" onClick={toggleImageExpand}>
                 <X size={24} />
-              </button>
-              <img 
+                </button>
+                <img 
                 src={headshot}
                 alt="Tanmay Desai"
                 className="profile-image"
                 />
             </div>
-          </div>
+            </div>
         )}
 
-        {/* Rest of the component remains the same */}
         <div className="tech-ticker">
-          <div
+            <div
             className="ticker-content"
             style={{
-              transform: `translateX(-${position}px)`,
-              transition: 'transform 0.05s linear',
+                transform: `translateX(-${position}px)`,
+                transition: 'transform 0.05s linear',
             }}
-          >
+            >
             {[...technologies, ...technologies].map((tech, index) => (
-              <div key={index} className="tech-item">
+                <div key={index} className="tech-item">
                 {tech.icon}
                 <span className="tech-name">{tech.name}</span>
-              </div>
+                </div>
             ))}
-          </div>
+            </div>
         </div>
 
         <div className="info-grid">
-          <div className="info-card">
+            <div className="info-card">
             <h2 className="card-title">Education</h2>
             <p className="school-name">University of California, Los Angeles (UCLA)</p>
             <p>BS, Computer Science and Engineering</p>
             <p>Expected June 2025</p>
-          </div>
+            </div>
 
-          <div className="info-card">
+            <div className="info-card">
             <h2 className="card-title">Technical Skills</h2>
             <p className="skill-item">
-              <span className="skill-label">Languages:</span> Python, SQL, C/C++, JavaScript, Haskell, R
+                <span className="skill-label">Languages:</span> Python, SQL, C/C++, JavaScript, Haskell, R
             </p>
             <p className="skill-item">
-              <span className="skill-label">Technologies:</span> React, Node.js, Git, Azure, Databricks
+                <span className="skill-label">Technologies:</span> React, Node.js, Git, Azure, Databricks
             </p>
-          </div>
+            </div>
         </div>
-      </main>
+        </main>
 
-      <footer className="footer">
+
+        <footer className="footer">
+        <div className="footer-icons">
+            <a href="mailto:desai.j.tanmay@gmail.com" target="_blank" rel="noopener noreferrer" className="footer-link">
+            <SiGmail className="footer-icon" />
+            <span>desai.j.tanmay@gmail.com</span>
+            </a>
+            <a href="tel:+18058716211" className="footer-link">
+            <span>📞</span>
+            <span>(805) 871-6211</span>
+            </a>
+            <a href="https://www.instagram.com/ta.anmay/" target="_blank" rel="noopener noreferrer" className="footer-link">
+            <SiInstagram className="footer-icon" />
+            <span>@ta.anmay</span>
+            </a>
+            <a href="https://www.linkedin.com/in/tanmaydesaij/" target="_blank" rel="noopener noreferrer" className="footer-link">
+            <SiLinkedin className="footer-icon" />
+            <span>LinkedIn</span>
+            </a>
+            <a href="https://github.com/TanmayJDesai" target="_blank" rel="noopener noreferrer" className="footer-link">
+            <SiGithub className="footer-icon" />
+            <span>GitHub</span>
+            </a>
+        </div>
         <p>© 2025 Tanmay Desai. All rights reserved.</p>
-      </footer>
+        </footer>
+
     </div>
   );
 };
