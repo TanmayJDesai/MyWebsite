@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Code, Briefcase, Users, Sun, Moon } from 'lucide-react';
+import { SiPython, SiJavascript, SiHtml5, SiCss3, SiCplusplus, SiC, SiNodejs, SiReact, SiNodeDotJs, SiGit, SiHaskell, SiR } from 'react-icons/si';
 import './HomePage.css';
 
 const HomePage = () => {
@@ -8,13 +9,22 @@ const HomePage = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const technologies = [
-    'Python', 'SQL', 'C/C++', 'Snowflake', 'SurrealDB', 'HTML', 
-    'CSS', 'JavaScript', 'Haskell', 'R', 'Node.js', 'React'
+    { name: 'Python', icon: <SiPython className='tech-logo'/> },
+    { name: 'SQL', icon: <SiReact className='tech-logo' />},
+    { name: 'C', icon: <SiC className='tech-logo' /> },
+    { name: 'C++', icon: <SiCplusplus className='tech-logo'/> },
+    { name: 'HTML', icon: <SiHtml5 className='tech-logo'/> },
+    { name: 'CSS', icon: <SiCss3 className='tech-logo'/> },
+    { name: 'JavaScript', icon: <SiJavascript className='tech-logo'/> },
+    { name: 'Haskell', icon: <SiHaskell className='tech-logo'/> },
+    { name: 'R', icon: <SiR className='tech-logo'/> },
+    { name: 'React', icon: <SiReact className='tech-logo'/> },
+    { name: 'Git', icon: <SiGit className='tech-logo'/> },
   ];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setPosition(prev => (prev + 1) % (technologies.length * 100));
+      setPosition((prev) => (prev + 1) % (technologies.length * 100));
     }, 50);
     return () => clearInterval(interval);
   }, []);
@@ -50,9 +60,20 @@ const HomePage = () => {
 
       <main className="main-content">
         <div className="header-section">
+          <div className="profile-container">
+            <div className="profile-image-wrapper">
+              <img 
+                src="/api/placeholder/300/300"
+                alt="Tanmay Desai"
+                className="profile-image"
+              />
+            </div>
+          </div>
           <h1 className="name-title">TANMAY DESAI</h1>
           <div className="contact-info">
-            <a href="mailto:desai.j.tanmay@gmail.com" className="contact-link">desai.j.tanmay@gmail.com</a>
+            <a href="mailto:desai.j.tanmay@gmail.com" className="contact-link">
+              desai.j.tanmay@gmail.com
+            </a>
             <span className="separator">|</span>
             <span>(805) 871-6211</span>
             <span className="separator">|</span>
@@ -61,16 +82,17 @@ const HomePage = () => {
         </div>
 
         <div className="tech-ticker">
-          <div 
+          <div
             className="ticker-content"
             style={{
               transform: `translateX(-${position}px)`,
-              transition: 'transform 0.05s linear'
+              transition: 'transform 0.05s linear',
             }}
           >
             {[...technologies, ...technologies].map((tech, index) => (
               <div key={index} className="tech-item">
-                {tech}
+                {tech.icon}
+                <span className="tech-name">{tech.name}</span>
               </div>
             ))}
           </div>
@@ -83,7 +105,7 @@ const HomePage = () => {
             <p>BS, Computer Science and Engineering</p>
             <p>Expected June 2025</p>
           </div>
-          
+
           <div className="info-card">
             <h2 className="card-title">Technical Skills</h2>
             <p className="skill-item">

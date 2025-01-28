@@ -245,7 +245,7 @@ body {
   
   .tech-ticker {
     position: relative;
-    height: 5rem;
+    height: 6.2rem;
     background-color: white;
     border-radius: 0.5rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -260,11 +260,21 @@ body {
   }
   
   .tech-item {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    size: 0cap;
+    align-items: center;
     padding: 1rem 2rem;
     font-size: 1.125rem;
     font-weight: 600;
     color: #4b5563;
+  }
+
+  .tech-logo {
+    height: 50px;
+    width: 50px;
+    margin-bottom: 0.5rem;
   }
   
   .info-grid {
@@ -312,8 +322,9 @@ body {
     }
   
     .contact-info {
-      flex-direction: column;
-      gap: 0.5rem;
+      flex-wrap: wrap;
+      gap: .5rem;
+      font-size: 1.875rem;
     }
   
     .separator {
@@ -344,5 +355,53 @@ body {
   
   .footer-links a:hover {
     color: #ffffff;
+  }
+  
+  .profile-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+  
+  .profile-image-wrapper {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 4px solid white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .profile-image-wrapper:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  
+  .dark-mode .profile-image-wrapper {
+    border-color: #2d2d2d;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Responsive design for profile image */
+  @media (max-width: 768px) {
+    .profile-image-wrapper {
+      width: 150px;
+      height: 150px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .profile-image-wrapper {
+      width: 120px;
+      height: 120px;
+    }
   }
   
