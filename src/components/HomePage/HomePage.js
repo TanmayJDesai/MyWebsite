@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Code, Briefcase, Users, Sun, Moon } from 'lucide-react';
+import { Code, Briefcase, Users, Sun, Moon, X } from 'lucide-react';
 import { SiPython, SiJavascript, SiHtml5, SiCss3, SiCplusplus, SiC, SiNodejs, SiReact, SiNodeDotJs, SiGit, SiHaskell, SiR } from 'react-icons/si';
 import './HomePage.css';
+import headshot from './headshot.jpg';
+
 
 const HomePage = () => {
   const [position, setPosition] = useState(0);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isImageExpanded, setIsImageExpanded] = useState(false);
 
   const technologies = [
     { name: 'Python', icon: <SiPython className='tech-logo'/> },
@@ -32,6 +35,12 @@ const HomePage = () => {
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
     document.body.classList.toggle('dark-mode', !isDarkMode);
+  };
+
+  const toggleImageExpand = () => {
+    setIsImageExpanded(!isImageExpanded);
+    // Prevent scrolling when modal is open
+    document.body.style.overflow = !isImageExpanded ? 'hidden' : 'unset';
   };
 
   return (
@@ -61,12 +70,21 @@ const HomePage = () => {
       <main className="main-content">
         <div className="header-section">
           <div className="profile-container">
-            <div className="profile-image-wrapper">
-              <img 
-                src="/api/placeholder/300/300"
+            <div 
+              className="profile-image-wrapper"
+              onClick={toggleImageExpand}
+              role="button"
+              tabIndex={0}
+              aria-label="Expand profile image"
+            >
+            <img 
+                src={headshot}
                 alt="Tanmay Desai"
                 className="profile-image"
-              />
+                />
+              <div className="profile-image-overlay">
+                <span>View photo</span>
+              </div>
             </div>
           </div>
           <h1 className="name-title">TANMAY DESAI</h1>
@@ -81,6 +99,23 @@ const HomePage = () => {
           </div>
         </div>
 
+        {/* Image Modal */}
+        {isImageExpanded && (
+          <div className="modal-overlay" onClick={toggleImageExpand}>
+            <div className="modal-content" onClick={e => e.stopPropagation()}>
+              <button className="modal-close" onClick={toggleImageExpand}>
+                <X size={24} />
+              </button>
+              <img 
+                src={headshot}
+                alt="Tanmay Desai"
+                className="profile-image"
+                />
+            </div>
+          </div>
+        )}
+
+        {/* Rest of the component remains the same */}
         <div className="tech-ticker">
           <div
             className="ticker-content"
