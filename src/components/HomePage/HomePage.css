@@ -285,7 +285,7 @@ body {
     border-radius: 0.5rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    margin-bottom: 4rem;
+    margin-bottom: 1rem;
   }
   
   .ticker-content {
@@ -329,7 +329,7 @@ body {
     font-size: 1.5rem;
     font-weight: bold;
     color: #111827;
-    margin-bottom: 1rem;
+    margin-bottom: 0rem;
   }
   
   .school-name {
@@ -891,8 +891,8 @@ html {
 
 .card-title {
   position: relative;
-  padding-bottom: 1rem;
-  margin-bottom: 1.5rem;
+  padding-bottom: 0rem;
+  margin-bottom: 0rem;
 }
 
 .card-title::after {
