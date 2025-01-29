@@ -19,37 +19,37 @@ const Projects = () => {
       title: "DeepVision Image Enhancement",
       description: "Developed an AI model to enhance image clarity using deep learning techniques.",
       technologies: ["TensorFlow", "OpenCV", "Keras", "NumPy", "Pillow"],
-      link: "https://github.com/yourrepo2",
+      link: "https://github.com/TanmayJDesai/Image_Upscaler",
     },
     {
       title: "DBT Adapter for SurrealDB",
       description: "Created a custom dbt adapter to integrate SurrealDB for efficient data transformations.",
       technologies: ["Python", "dbt", "SurrealDB", "SQLAlchemy", "Pytest"],
-      link: "https://github.com/yourrepo3",
+      link: "https://github.com/TanmayJDesai/dbt-surreal",
     },
     {
       title: "Twelfth Man (Real-Time Cricket Application)",
       description: "Built a real-time cricket score app using WebSockets for live updates.",
       technologies: ["JavaScript", "Node.js", "Express.js", "WebSocket API", "MongoDB"],
-      link: "https://github.com/yourrepo5",
+      link: "https://github.com/TanmayJDesai/Twelfth-Man-",
     },
     {
       title: "Chorus-Lapilli (TicTacToe-Style Game)",
       description: "Developed a strategy game inspired by TicTacToe with multiplayer functionality.",
       technologies: ["JavaScript", "React", "CSS", "Node.js", "Socket.io"],
-      link: "https://github.com/yourrepo6",
+      link: "https://github.com/TanmayJDesai/Chorus-Lapilli",
     },
     {
       title: "Stock Analysis: Amazon vs NASDAQ Composite",
       description: "Analyzed Amazon stock performance against the NASDAQ Composite over five years, revealing insights into market behavior.",
       technologies: ["Python", "Pandas", "NumPy", "Matplotlib", "Seaborn"],
-      link: "https://github.com/yourrepo1",
+      link: "https://github.com/TanmayJDesai/Amazon-Vs-NASDAQ-Composite",
     },
     {
       title: "Shortest Path Finder for College Campuses",
       description: "Designed a shortest-path finder for campus navigation using the A* algorithm.",
       technologies: ["Python", "A* Algorithm", "Tkinter", "NetworkX"],
-      link: "https://github.com/yourrepo4",
+      link: "https://github.com/TanmayJDesai/Shortest_Path_Finder",
     },
 
   ];
