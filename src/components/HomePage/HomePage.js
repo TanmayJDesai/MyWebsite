@@ -109,7 +109,12 @@ const HomePage = () => {
             </div>
             </div>
             <h1 className="name-title">TANMAY DESAI</h1>
-
+            <div className="resume-button-container">
+  
+                <Link to="/resume" className="resume-button" target="_blank" >
+                    View Resume
+                </Link>
+            </div>
         </div>
         
         {/* Description Section */}
