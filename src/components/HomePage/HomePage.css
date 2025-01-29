@@ -212,7 +212,7 @@ body {
 
   .typewriter-section {
     text-align: center;
-    margin: 2rem 0;
+    margin: 0.5rem 0;
   }
   
   .typewriter {
@@ -1047,8 +1047,8 @@ html {
 }
 
 .resume-button {
-  background-color: #0066cc;
-  color: white;
+  background-color: #f5f5f5;  /* Light gray for light mode */
+  color: #333;  /* Dark gray text for light mode */
   padding: 12px 24px;
   border-radius: 25px;
   text-decoration: none;
@@ -1058,10 +1058,23 @@ html {
   cursor: pointer;
 }
 
+.dark-mode .resume-button {
+  background-color: #333333;  /* Darker shade for dark mode */
+  color: #ffffff;  /* White text for dark mode */
+}
+
 .resume-button:hover {
-  background-color: #0052a3;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effects for each mode */
+.resume-button:hover {
+  background-color: #e0e0e0;  /* Slightly darker on hover for light mode */
+}
+
+.dark-mode .resume-button:hover {
+  background-color: #404040;  /* Slightly lighter on hover for dark mode */
 }
 
 /* Styles for the Resume page */
