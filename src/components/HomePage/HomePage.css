@@ -568,7 +568,6 @@ body {
   .pdf-rectangle:hover {
     background-color: #45a049; /* Darker green on hover */
   }
-  /* Add these styles to your existing HomePage.css */
 
 .skills-grid {
     display: grid;
@@ -866,13 +865,178 @@ html {
   outline-color: #ffffff;
 }
 
-/* Selection color */
-::selection {
-  background-color: #007bff;
-  color: white;
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .skills-card, .achievements-card {
+    grid-column: span 1;
+  }
+  
+  .skills-container, .achievements-container {
+    grid-template-columns: 1fr;
+  }
 }
 
-.dark-mode ::selection {
-  background-color: #ffffff;
-  color: #1a1a1a;
+/* Enhanced Awards and Accomplishments Styling */
+.info-card {
+  padding: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-title {
+  position: relative;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.card-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(to right, #040404, #ffffff);
+  border-radius: 2px;
+}
+
+.skill-item {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  background: rgba(0, 123, 255, 0.05);
+  transition: background-color 0.3s ease;
+}
+
+.skill-item:hover {
+  background: rgba(0, 123, 255, 0.1);
+}
+
+.skill-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  color: #007bff;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Dark mode adjustments for awards section */
+.dark-mode .info-card {
+  background-color: #2d2d2d;
+}
+
+.dark-mode .skill-item {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.dark-mode .skill-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .skill-label {
+  color: #66b3ff;
+}
+
+.dark-mode .card-title::after {
+  background: linear-gradient(to right, #529fec, #ffffff);
+}
+
+/* Animation for awards section */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.info-card {
+  animation: slideIn 0.5s ease-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .skills-card, .achievements-card {
+    grid-column: span 1;
+  }
+  
+  .skills-container, .achievements-container {
+    grid-template-columns: 1fr;
+  }
+
+  .info-card {
+    padding: 1.5rem;
+  }
+
+  .skill-item {
+    padding: 0.75rem;
+  }
+
+  .card-title {
+    font-size: 1.3rem;
+  }
+
+  .skill-label {
+    font-size: 1rem;
+  }
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.education-card {
+  background: #f8f9fa;
+  color: #000000;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+}
+
+.dark-mode .education-card {
+  background: #1a1a1a;
+  color: #ffffff;
+}
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.info-card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.skill-item {
+  margin-bottom: 8px;
+}
+
+.skill-label {
+  font-weight: bold;
 }

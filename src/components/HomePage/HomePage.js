@@ -153,26 +153,47 @@ const HomePage = () => {
             </div>
         </div>
 
-        <div className="info-grid">
-            <div className="info-card">
-            <h2 className="card-title">Education</h2>
-            <p className="school-name">University of California, Los Angeles (UCLA)</p>
-            <p>BS, Computer Science and Engineering</p>
-            <p>Expected June 2025</p>
-            </div>
+        <div className="info-container">
+          <div className="education-card">
+              <h2 className="card-title">Education</h2>
+              <p className="school-name">University of California, Los Angeles (UCLA)</p>
+              <p>BS, Computer Science and Engineering</p>
+              <p>Expected June 2025</p>
+          </div>
 
-            <div className="info-card">
-            <h2 className="card-title">Technical Skills</h2>
-            <p className="skill-item">
-                <span className="skill-label">Languages:</span> Python, SQL, C/C++, JavaScript, Haskell, R
-            </p>
-            <p className="skill-item">
-                <span className="skill-label">Technologies:</span> React, Node.js, Git, Azure, Databricks
-            </p>
-            </div>
-        </div>
+          <div className="info-grid">
+              <div className="info-card">
+                  <h2 className="card-title">Skills</h2>
+                  <p className="skill-item">
+                      <span className="skill-label">Programming Languages/Databases:</span> Python, SQL, C/C++, Snowflake, SurrealDB, HTML, CSS, JS, Haskell, R.
+                  </p>
+                  <p className="skill-item">
+                      <span className="skill-label">Technologies:</span> Emacs, Microsoft Office, Git Version Control, Microsoft Excel, Microsoft Azure, Databricks, DBT, Node.js, Network Programming using Sockets.
+                  </p>
+                  <p className="skill-item">
+                      <span className="skill-label">Project Management:</span> Agile Methodology, Waterfall Methodology, Asana, JIRA.
+                  </p>
+                  <p className="skill-item">
+                      <span className="skill-label">Languages:</span> English (Fluent), Gujarati (Fluent), Hindi (Fluent), Spanish (Classroom Study).
+                  </p>
+              </div>
+
+              <div className="info-card">
+                  <h2 className="card-title">Awards and Accomplishments</h2>
+                  <p className="skill-item">
+                      <span className="skill-label">Educational Distinctions:</span> Full IB Diploma, Superintendent’s Highest Honor Award, Principal’s Honor Roll, AP Scholar with Distinction.
+                  </p>     
+                  <p className="skill-item">
+                      <span className="skill-label">Miscellaneous:</span> California State Seal of Civic Engagement, Biliteracy Award, Cognizant Digital Leadership Academy (DLA).
+                  </p>   
+                  <p className="skill-item">
+                      <span className="skill-label">Sports:</span> President at UCLA Cricket, MVP in NCCA, 6 years of wrestling experience, Wrestled in Marmonte League for 4 years.
+                  </p>     
+              </div>
+          </div>
+      </div>
+
         </main>
-
 
         <footer className="footer">
         <div className="footer-icons">

@@ -6,6 +6,7 @@ import './Organization.css';
 
 const Organizations = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [filter, setFilter] = useState("All");
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
@@ -16,6 +17,7 @@ const Organizations = () => {
     {
       title: "The Data Science Union at UCLA",
       role: "Data Analyst",
+      category: "Technical",
       duration: "Apr 2023 - Present",
       location: "Los Angeles, California, United States",
       responsibilities: [
@@ -27,6 +29,7 @@ const Organizations = () => {
     },
     {
       title: "Consult Your Community at UCLA",
+      category: "Consulting",
       roles: [
         {
           title: "Senior Consultant",
@@ -49,33 +52,36 @@ const Organizations = () => {
       ]
     },
     {
-        title: "UCLA Cricket",
-        roles: [
-          {
-            title: "President",
-            duration: "Jan 2024 - Jun 2024",
-            location: "Los Angeles, California, United States",
-            responsibilities: [
-              "Organized weekly executive board meetings to ensure consistent communication between officers, addressing fundraising, recruitment, event planning, and practice logistics.",
-              "Developed clear role expectations for each board member to distribute responsibilities effectively and created an annual transition document to ensure leadership continuity after officer transitions.",
-              "Expanded fundraising efforts by leading the UCLA Spark crowdfunding campaign, securing funds for tournament fees and Nationals participation.",
-              "Strengthened team visibility through social media marketing and in-person club outreach, helping to boost recruitment and engagement.",
-              "Assisted in organizing bi-weekly practices and competitive matches against teams like USC, UCSD, and UCI to prepare for high-level competition."
-            ]
-          },
-          {
-            title: "Vice President",
-            duration: "Jan 2022 - Dec 2023",
-            location: "Los Angeles, California, United States",
-            responsibilities: [
-              "Worked with a partner to organize a mass crowdfunding campaign, UCLA Spark, acquiring funds for tournament fees and Nationals participation.",
-              "Contributed to public outreach through social media marketing and in-person club marketing.",
-              "Helped organize official bi-weekly practices and at-home games against schools including USC, UCSD, and UCI."
-            ]
-          }
-        ]
-      }      
+      title: "UCLA Cricket",
+      category: "Sports",
+      roles: [
+        {
+          title: "President",
+          duration: "Jan 2024 - Jun 2024",
+          location: "Los Angeles, California, United States",
+          responsibilities: [
+            "Organized weekly executive board meetings to ensure consistent communication between officers, addressing fundraising, recruitment, event planning, and practice logistics.",
+            "Developed clear role expectations for each board member to distribute responsibilities effectively and created an annual transition document to ensure leadership continuity after officer transitions.",
+            "Expanded fundraising efforts by leading the UCLA Spark crowdfunding campaign, securing funds for tournament fees and Nationals participation.",
+            "Strengthened team visibility through social media marketing and in-person club outreach, helping to boost recruitment and engagement.",
+            "Assisted in organizing bi-weekly practices and competitive matches against teams like USC, UCSD, and UCI to prepare for high-level competition."
+          ]
+        },
+        {
+          title: "Vice President",
+          duration: "Jan 2022 - Dec 2023",
+          location: "Los Angeles, California, United States",
+          responsibilities: [
+            "Worked with a partner to organize a mass crowdfunding campaign, UCLA Spark, acquiring funds for tournament fees and Nationals participation.",
+            "Contributed to public outreach through social media marketing and in-person club marketing.",
+            "Helped organize official bi-weekly practices and at-home games against schools including USC, UCSD, and UCI."
+          ]
+        }
+      ]
+    }
   ];
+
+  const filteredOrganizations = filter === "All" ? organizations : organizations.filter(org => org.category === filter);
 
   return (
     <div className={`container ${isDarkMode ? 'dark-mode' : ''}`}>
@@ -107,14 +113,37 @@ const Organizations = () => {
 
       <main className="main-content">
         <h1 className="page-title">Organizations</h1>
-        
+
+        {/* Filter Buttons */}
+        <div className="filter-nav">
+         <button 
+            className={`filter-button ${filter === "All" ? "active" : ""}`} 
+            onClick={() => setFilter("All")}>
+            Show All
+          </button>
+          <button 
+            className={`filter-button ${filter === "Technical" ? "active" : ""}`} 
+            onClick={() => setFilter("Technical")}>
+            Technical
+          </button>
+          <button 
+            className={`filter-button ${filter === "Consulting" ? "active" : ""}`} 
+            onClick={() => setFilter("Consulting")}>
+            Consulting
+          </button>
+          <button 
+            className={`filter-button ${filter === "Sports" ? "active" : ""}`} 
+            onClick={() => setFilter("Sports")}>
+            Sports
+          </button>
+        </div>
+
         <div className="organizations-grid">
-          {organizations.map((org, index) => (
+          {filteredOrganizations.map((org, index) => (
             <div key={index} className="org-card">
               <h2 className="org-title">{org.title}</h2>
-              
+
               {org.roles ? (
-                // For organizations with multiple roles
                 <div className="roles-container">
                   {org.roles.map((role, roleIndex) => (
                     <div key={roleIndex} className="role-section">
@@ -130,7 +159,6 @@ const Organizations = () => {
                   ))}
                 </div>
               ) : (
-                // For organizations with single role
                 <div className="role-section">
                   <h3 className="role-title">{org.role}</h3>
                   <p className="duration">{org.duration}</p>
