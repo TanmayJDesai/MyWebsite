@@ -1040,11 +1040,10 @@ html {
 .skill-label {
   font-weight: bold;
 }
-
 .resume-button-container {
   display: flex;
   justify-content: center;
-  margin: 20px 0;
+  margin: 0px 0 0 0;
 }
 
 .resume-button {
