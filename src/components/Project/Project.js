@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { Code, Briefcase, Users, Sun, Moon, Search } from 'lucide-react';
+import { House, Code, Briefcase, Users, Sun, Moon, Search } from 'lucide-react';
 import { SiGmail, SiInstagram, SiLinkedin, SiGithub } from 'react-icons/si';
 import './Project.css';
 
@@ -9,19 +9,12 @@ const Projects = () => {
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Function to toggle the dark/light theme
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
     document.body.classList.toggle('dark-mode', !isDarkMode);
   };
 
   const projects = [
-    {
-      title: "Stock Analysis: Amazon vs NASDAQ Composite",
-      description: "Analyzed Amazon stock performance against the NASDAQ Composite over five years, revealing insights into market behavior.",
-      technologies: ["Python", "Pandas", "NumPy", "Matplotlib", "Seaborn"],
-      link: "https://github.com/yourrepo1",
-    },
     {
       title: "DeepVision Image Enhancement",
       description: "Developed an AI model to enhance image clarity using deep learning techniques.",
@@ -35,12 +28,6 @@ const Projects = () => {
       link: "https://github.com/yourrepo3",
     },
     {
-      title: "Shortest Path Finder for College Campuses",
-      description: "Designed a shortest-path finder for campus navigation using the A* algorithm.",
-      technologies: ["Python", "A* Algorithm", "Tkinter", "NetworkX"],
-      link: "https://github.com/yourrepo4",
-    },
-    {
       title: "Twelfth Man (Real-Time Cricket Application)",
       description: "Built a real-time cricket score app using WebSockets for live updates.",
       technologies: ["JavaScript", "Node.js", "Express.js", "WebSocket API", "MongoDB"],
@@ -52,42 +39,66 @@ const Projects = () => {
       technologies: ["JavaScript", "React", "CSS", "Node.js", "Socket.io"],
       link: "https://github.com/yourrepo6",
     },
+    {
+      title: "Stock Analysis: Amazon vs NASDAQ Composite",
+      description: "Analyzed Amazon stock performance against the NASDAQ Composite over five years, revealing insights into market behavior.",
+      technologies: ["Python", "Pandas", "NumPy", "Matplotlib", "Seaborn"],
+      link: "https://github.com/yourrepo1",
+    },
+    {
+      title: "Shortest Path Finder for College Campuses",
+      description: "Designed a shortest-path finder for campus navigation using the A* algorithm.",
+      technologies: ["Python", "A* Algorithm", "Tkinter", "NetworkX"],
+      link: "https://github.com/yourrepo4",
+    },
+
   ];
 
-  const handlePrev = () => {
-    setCurrentProjectIndex((prevIndex) => (prevIndex === 0 ? projects.length - 1 : prevIndex - 1));
-  };
-
-  const handleNext = () => {
-    setCurrentProjectIndex((prevIndex) => (prevIndex === projects.length - 1 ? 0 : prevIndex + 1));
-  };
-
-  // Function to handle search
-  const handleSearch = (e) => {
-    const query = e.target.value.toLowerCase();
-    setSearchQuery(query);
+  // Filter projects based on search query
+  const filteredProjects = useMemo(() => {
+    if (!searchQuery) return projects;
     
-    if (query) {
-      // Search through projects
-      const foundIndex = projects.findIndex(project => 
-        project.title.toLowerCase().includes(query) ||
-        project.description.toLowerCase().includes(query) ||
-        project.technologies.some(tech => tech.toLowerCase().includes(query))
+    return projects.filter(project => 
+      project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      project.technologies.some(tech => tech.toLowerCase().includes(searchQuery.toLowerCase()))
+    );
+  }, [searchQuery]);
+
+  const handlePrev = () => {
+    if (filteredProjects.length > 0) {
+      setCurrentProjectIndex((prevIndex) => 
+        prevIndex === 0 ? filteredProjects.length - 1 : prevIndex - 1
       );
-      
-      // If a match is found, update the current project index
-      if (foundIndex !== -1) {
-        setCurrentProjectIndex(foundIndex);
-      }
     }
   };
 
+  const handleNext = () => {
+    if (filteredProjects.length > 0) {
+      setCurrentProjectIndex((prevIndex) => 
+        prevIndex === filteredProjects.length - 1 ? 0 : prevIndex + 1
+      );
+    }
+  };
+
+  const handleSearch = (e) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+    setCurrentProjectIndex(0); // Reset to first matching project
+  };
+
+  // Show message if no projects match the search
+  const noResults = searchQuery && filteredProjects.length === 0;
+
   return (
     <div className="container">
-      {/* Navigation Bar */}
       <nav className="navigation">
         <div className="nav-content">
           <div className="nav-links">
+            <Link to="/" className="nav-link">
+              <House className="nav-icon" />
+              Home Page
+            </Link>
             <Link to="/projects" className="nav-link">
               <Code className="nav-icon" />
               Projects
@@ -107,11 +118,9 @@ const Projects = () => {
         </div>
       </nav>
 
-      {/* Main Content */}
       <main className="main-content">
         <h1>Projects</h1>
 
-        {/* Search Bar */}
         <div className="search-container">
           <div className="search-wrapper">
             <Search className="search-icon" />
@@ -126,30 +135,54 @@ const Projects = () => {
         </div>
 
         <div className="projects-container">
-          <div className="carousel">
-            <button className="carousel-btn prev" onClick={handlePrev}>‹</button>
-            <div className="project-card">
-              <h3>{projects[currentProjectIndex].title}</h3>
-              <p className="description">{projects[currentProjectIndex].description}</p>
-              <div className="technologies">
-                <p><strong>Technologies:</strong></p>
-                <p>{projects[currentProjectIndex].technologies.join(', ')}</p>
-              </div>
-              <a 
-                href={projects[currentProjectIndex].link} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="project-link"
-              >
-                View Project
-              </a>
+          {noResults ? (
+            <div className="no-results">
+              <p>No projects found matching "{searchQuery}"</p>
             </div>
-            <button className="carousel-btn next" onClick={handleNext}>›</button>
-          </div>
+          ) : (
+            <div className="carousel">
+              <button 
+                className="carousel-btn prev" 
+                onClick={handlePrev}
+                disabled={filteredProjects.length <= 1}
+              >
+                ‹
+              </button>
+              <div className="project-card">
+                <h3>{filteredProjects[currentProjectIndex]?.title}</h3>
+                <p className="description">
+                  {filteredProjects[currentProjectIndex]?.description}
+                </p>
+                <div className="technologies">
+                  <p><strong>Technologies:</strong></p>
+                  <p>{filteredProjects[currentProjectIndex]?.technologies.join(', ')}</p>
+                </div>
+                <a 
+                  href={filteredProjects[currentProjectIndex]?.link} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="project-link"
+                >
+                  View Project
+                </a>
+              </div>
+              <button 
+                className="carousel-btn next" 
+                onClick={handleNext}
+                disabled={filteredProjects.length <= 1}
+              >
+                ›
+              </button>
+            </div>
+          )}
+          {filteredProjects.length > 0 && (
+            <div className="project-counter">
+              {currentProjectIndex + 1} of {filteredProjects.length} projects
+            </div>
+          )}
         </div>
       </main>
 
-      {/* Footer */}
       <footer className="footer">
         <div className="footer-icons">
           <a href="mailto:desai.j.tanmay@gmail.com" target="_blank" rel="noopener noreferrer" className="footer-link">
@@ -180,3 +213,4 @@ const Projects = () => {
 };
 
 export default Projects;
+

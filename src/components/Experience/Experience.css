@@ -247,6 +247,11 @@
   .timeline-description {
     margin-top: 1rem;
     list-style-position: inside;
+    color: #333;
+  }
+
+  .dark-mode .timeline-description {
+    color: #fff;
   }
   
   .timeline-description li {

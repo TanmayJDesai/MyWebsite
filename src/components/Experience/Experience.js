@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Code, Briefcase, Users, Sun, Moon } from 'lucide-react';
+import { House, Code, Briefcase, Users, Sun, Moon } from 'lucide-react';
 import { SiGmail, SiInstagram, SiLinkedin, SiGithub } from 'react-icons/si';
 import './Experience.css';
 
@@ -70,24 +70,28 @@ const Experiences = () => {
 
   return (
     <div className={`container ${isDarkMode ? 'dark-mode' : ''}`}>
-      <nav className="nav">
+      <nav className="navigation">
         <div className="nav-content">
           <div className="nav-links">
+            <Link to="/" className="nav-link">
+              <House className="nav-icon" />
+              Home Page
+            </Link>
             <Link to="/projects" className="nav-link">
-              <Code size={20} />
-              <span>Projects</span>
+              <Code className="nav-icon" />
+              Projects
             </Link>
             <Link to="/experience" className="nav-link">
-              <Briefcase size={20} />
-              <span>Experience</span>
+              <Briefcase className="nav-icon" />
+              Experience
             </Link>
             <Link to="/organizations" className="nav-link">
-              <Users size={20} />
-              <span>Organizations</span>
+              <Users className="nav-icon" />
+              Organizations
             </Link>
           </div>
           <button className="theme-toggle" onClick={toggleTheme}>
-            {isDarkMode ? <Moon size={20} /> : <Sun size={20} />}
+            {isDarkMode ? <Moon className="theme-icon" /> : <Sun className="theme-icon" />}
           </button>
         </div>
       </nav>
@@ -105,7 +109,9 @@ const Experiences = () => {
         </div>
 
         <div className="timeline-container">
+          
           <div className="timeline-line"></div>
+          
           <div className="timeline">
             {filteredExperiences.map((exp, index) => (
               <div key={exp.id} className={`timeline-item ${activeExperience === exp.id ? 'active' : ''}`}>

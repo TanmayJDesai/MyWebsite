@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Code, Briefcase, Users, Sun, Moon, X } from 'lucide-react';
+import { House, Code, Briefcase, Users, Sun, Moon, X } from 'lucide-react';
 import { SiGmail, SiInstagram, SiLinkedin, SiGithub, SiPython, SiJavascript, SiHtml5, SiCss3, SiCplusplus, SiC, SiNodejs, SiReact, SiNodeDotJs, SiGit, SiHaskell, SiR } from 'react-icons/si';
 import './HomePage.css';
 import headshot from './headshot.jpg';
@@ -63,6 +63,10 @@ const HomePage = () => {
       <nav className="navigation">
         <div className="nav-content">
           <div className="nav-links">
+            <Link to="/" className="nav-link">
+              <House className="nav-icon" />
+              Home Page
+            </Link>
             <Link to="/projects" className="nav-link">
               <Code className="nav-icon" />
               Projects

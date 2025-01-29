@@ -644,3 +644,235 @@ body {
       grid-column: span 1;
     }
   }
+
+  .dark-mode p,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode h4,
+.dark-mode span,
+.dark-mode li {
+  color: #ffffff;
+}
+
+.dark-mode .skill-item,
+.dark-mode .school-name,
+.dark-mode .typewriter,
+.dark-mode .description-section {
+  color: #ffffff;
+}
+
+/* Enhanced Hover Effects */
+.nav-link {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #007bff;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Typography Enhancements */
+.tech-item {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.card-title {
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+}
+
+/* Animation Refinements */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.info-card {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+/* Enhanced Footer Styling */
+.footer {
+  position: relative;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #007bff, transparent);
+}
+
+/* Dark Mode Footer Enhancements */
+.dark-mode .footer::before {
+  background: linear-gradient(to right, transparent, #ffffff, transparent);
+}
+
+/* Enhanced Modal Transitions */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-content {
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+/* Dark Mode Modal Enhancements */
+.dark-mode .modal-content {
+  background-color: #2d2d2d;
+  border: 1px solid #3d3d3d;
+}
+
+/* Tech Ticker Enhancements */
+.tech-logo {
+  transition: transform 0.3s ease;
+}
+
+.tech-logo:hover {
+  transform: scale(1.2) rotate(5deg);
+}
+
+/* Dark Mode Tech Ticker */
+.dark-mode .tech-logo {
+  filter: brightness(0.9);
+}
+
+/* Profile Image Enhancements */
+.profile-image-wrapper::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #007bff, #00ff88);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.profile-image-wrapper:hover::after {
+  opacity: 1;
+}
+
+/* Dark Mode Profile Image */
+.dark-mode .profile-image-wrapper {
+  border-color: #2d2d2d;
+}
+
+/* Skill Category Enhancements */
+.skill-category {
+  position: relative;
+  padding-left: 15px;
+}
+
+.skill-category::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, #007bff, transparent);
+}
+
+/* Dark Mode Skill Category */
+.dark-mode .skill-category::before {
+  background: linear-gradient(to bottom, #ffffff, transparent);
+}
+
+/* Achievement List Enhancements */
+.achievement-list li {
+  transition: transform 0.2s ease;
+}
+
+.achievement-list li:hover {
+  transform: translateX(5px);
+}
+
+/* Dark Mode Achievement List */
+.dark-mode .achievement-list li::before {
+  color: #ffffff;
+}
+
+/* PDF Rectangle Enhancements */
+.pdf-rectangle {
+  position: relative;
+  overflow: hidden;
+}
+
+.pdf-rectangle::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.pdf-rectangle:hover::after {
+  left: 100%;
+}
+
+/* Add smooth scrolling to the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus styles for accessibility */
+:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+.dark-mode :focus {
+  outline-color: #ffffff;
+}
+
+/* Selection color */
+::selection {
+  background-color: #007bff;
+  color: white;
+}
+
+.dark-mode ::selection {
+  background-color: #ffffff;
+  color: #1a1a1a;
+}

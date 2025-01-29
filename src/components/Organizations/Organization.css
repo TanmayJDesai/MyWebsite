@@ -1,0 +1,273 @@
+/* Organizations.css */
+/* Base styles */
+.container {
+    min-height: 100vh;
+    background-color: #f9fafb;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .dark-mode {
+    background-color: #1a1a1a;
+    color: #ffffff;
+  }
+  
+  /* Page title */
+  .page-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin: 2rem 0;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .dark-mode .page-title {
+    color: #fff;
+  }
+  
+  /* Filter Navigation - New Styles */
+  .filter-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 0 auto 3rem;
+    padding: 0 1rem;
+    max-width: 600px;
+  }
+  
+  .filter-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    background-color: #f1f5f9;
+    color: #4b5563;
+  }
+  
+  .filter-button:hover {
+    background-color: #e2e8f0;
+    transform: translateY(-2px);
+  }
+  
+  .filter-button.active {
+    background-color: #007bff;
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dark-mode .filter-button {
+    background-color: #2d2d2d;
+    color: #e2e8f0;
+  }
+  
+  .dark-mode .filter-button:hover {
+    background-color: #404040;
+  }
+  
+  .dark-mode .filter-button.active {
+    background-color: #4dabf7;
+  }
+  
+  .filter-button-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  
+  /* Organizations Grid */
+  .organizations-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  /* Organization Card */
+  .org-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 0.5s ease-out;
+    animation-fill-mode: both;
+  }
+  
+  .org-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .dark-mode .org-card {
+    background-color: #2d2d2d;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Organization Title */
+  .org-title {
+    font-size: 1.8rem;
+    color: #007bff;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e5e7eb;
+  }
+  
+  .dark-mode .org-title {
+    color: #4dabf7;
+    border-bottom-color: #4a4a4a;
+  }
+  
+  /* Roles Container */
+  .roles-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  /* Role Section */
+  .role-section {
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #007bff;
+  }
+  
+  .dark-mode .role-section {
+    background-color: #363636;
+    border-left-color: #4dabf7;
+  }
+  
+  /* Role Title */
+  .role-title {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+  
+  .dark-mode .role-title {
+    color: #fff;
+  }
+  
+  /* Duration and Location */
+  .duration, .location {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+  }
+  
+  .dark-mode .duration,
+  .dark-mode .location {
+    color: #adb5bd;
+  }
+  
+  /* Responsibilities List */
+  .responsibilities-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 1rem 0;
+  }
+  
+  .responsibilities-list li {
+    padding-left: 1.5rem;
+    margin-bottom: 0.8rem;
+    position: relative;
+    line-height: 1.5;
+    color: #4a5568;
+  }
+  
+  .dark-mode .responsibilities-list li {
+    color: #e2e8f0;
+  }
+  
+  .responsibilities-list li::before {
+    content: "•";
+    color: #007bff;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+  }
+  
+  .dark-mode .responsibilities-list li::before {
+    color: #4dabf7;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Card Animation Delays */
+  .org-card:nth-child(1) { animation-delay: 0.1s; }
+  .org-card:nth-child(2) { animation-delay: 0.2s; }
+  .org-card:nth-child(3) { animation-delay: 0.3s; }
+  
+  /* Hover Effects */
+  .org-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #007bff, #00d4ff);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  
+  .org-card:hover::after {
+    transform: scaleX(1);
+  }
+  
+  .dark-mode .org-card::after {
+    background: linear-gradient(90deg, #4dabf7, #74c0fc);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .page-title {
+      font-size: 2rem;
+      margin: 1.5rem 0;
+    }
+  
+    .filter-nav {
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+  
+    .filter-button {
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+    }
+  
+    .org-card {
+      padding: 1.5rem;
+    }
+  
+    .org-title {
+      font-size: 1.5rem;
+    }
+  
+    .role-title {
+      font-size: 1.2rem;
+    }
+  
+    .responsibilities-list li {
+      font-size: 0.9rem;
+    }
+  }

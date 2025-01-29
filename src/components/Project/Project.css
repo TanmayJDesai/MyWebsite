@@ -162,7 +162,34 @@ body.dark-mode .project-card h3 {
   line-height: 1.6;
   margin-bottom: 20px;
   max-width: 90%;
+  color: #333; /* Explicitly set color for light mode */
+  transition: color 0.3s ease; /* Smooth transition for color changes */
 }
+
+/* Update dark mode styles */
+body.dark-mode .project-card .description {
+  color: #fff; /* Explicitly set color for dark mode */
+}
+
+.project-card p {
+  color: #333; /* Default text color for all paragraphs in cards */
+}
+
+body.dark-mode .project-card p {
+  color: #fff; /* White text for all paragraphs in dark mode */
+}
+
+/* Ensuring technologies text is also properly colored */
+.technologies {
+  margin: 20px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+body.dark-mode .technologies {
+  color: #fff;
+}
+
 
 .technologies {
   margin: 20px 0;
@@ -302,8 +329,6 @@ body.dark-mode .footer {
   animation: typing 4s steps(20) forwards, blink 0.75s step-end infinite;
 }
 
-/* Add these styles to your existing CSS file */
-
 /* Search Container */
 .search-container {
   width: 100%;
@@ -358,7 +383,6 @@ body.dark-mode .search-input:focus {
   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
 }
 
-/* Add this to your existing media query */
 @media (max-width: 768px) {
   .search-container {
       padding: 0 10px;
@@ -367,4 +391,31 @@ body.dark-mode .search-input:focus {
   .search-input {
       font-size: 14px;
   }
+}
+
+.no-results {
+  text-align: center;
+  padding: 40px;
+  font-size: 18px;
+  color: #666;
+}
+
+body.dark-mode .no-results {
+  color: #ccc;
+}
+
+.carousel-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.project-counter {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #666;
+}
+
+body.dark-mode .project-counter {
+  color: #ccc;
 }
