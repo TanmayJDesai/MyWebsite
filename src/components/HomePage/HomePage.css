@@ -568,4 +568,79 @@ body {
   .pdf-rectangle:hover {
     background-color: #45a049; /* Darker green on hover */
   }
+  /* Add these styles to your existing HomePage.css */
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
   
+  .skill-category {
+    margin-bottom: 1rem;
+  }
+  
+  .skill-category-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #4b5563;
+    margin-bottom: 0.5rem;
+  }
+  
+  .achievements-card {
+    grid-column: span 2;
+  }
+  
+  .achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  
+  .achievement-category {
+    margin-bottom: 1.5rem;
+  }
+  
+  .achievement-category-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #4b5563;
+    margin-bottom: 0.75rem;
+  }
+  
+  .achievement-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .achievement-list li {
+    margin-bottom: 0.5rem;
+    position: relative;
+    padding-left: 1.25rem;
+  }
+  
+  .achievement-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #6366f1;
+  }
+  
+  /* Dark mode adjustments */
+  .dark-mode .skill-category-title,
+  .dark-mode .achievement-category-title {
+    color: #9ca3af;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .skills-grid,
+    .achievements-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .achievements-card {
+      grid-column: span 1;
+    }
+  }
